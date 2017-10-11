@@ -1,0 +1,34 @@
+--- src/Makefile.orig	2017-10-01 01:31:28.374321001 -0400
++++ src/Makefile	2017-10-01 01:31:53.350321001 -0400
+@@ -14,13 +14,7 @@
+ 	sources/avstream/alsa.o				        \
+ 	sources/avstream/capture.o
+ 
+-OS_ARCH := $(shell uname -m | sed -e 's/i.86/i386/')
+-ifneq ($(OS_ARCH), i386)
+-	ProCapture-objs += ProCaptureLib_64.a
+-else
+-	ProCapture-objs += ProCaptureLib_32.a
+-endif
+-
++ProCapture-objs += ProCaptureLib_64.a
+ 
+ obj-m = ProCapture.o
+ 
+@@ -30,14 +24,14 @@
+ 
+ else
+ 
+-KERNELDIR ?= /lib/modules/$(shell uname -r)/build
++KERNELDIR := $(KERNEL_SRC)
+ 
+ PWD := $(shell pwd)
+ 
+ all:
+ 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
+ 
+-install:
++modules_install:
+ 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules_install
+ 
+ clean:
