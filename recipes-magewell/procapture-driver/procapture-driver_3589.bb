@@ -5,6 +5,7 @@ LIC_FILES_CHKSUM = "file://../docs/Readme.txt;beginline=41;endline=57;md5=76340e
 
 SRC_URI = "http://www.magewell.com/files/ProCaptureForLinux_${PV}.tar.gz \
            file://0001-64bit-Makefile.patch \
+           file://0002-64bit-Makefile-clean.patch \
 "
 
 SRC_URI[md5sum] = "f6a03817cf6df791b12a24f0a15c550b"

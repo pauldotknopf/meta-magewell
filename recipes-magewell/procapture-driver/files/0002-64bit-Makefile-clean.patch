@@ -1,0 +1,12 @@
+--- src/Makefile.orig	2017-10-23 09:29:36.129710739 -0400
++++ src/Makefile	2017-10-23 09:34:49.216947287 -0400
+@@ -35,6 +35,9 @@
+ 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules_install
+ 
+ clean:
++	# Protect the shipped, precompiled static libraries
++	mv ProCaptureLib_64.a ProCaptureLib_64.aa
+ 	$(MAKE) -C $(KERNELDIR) M=$(PWD) clean
++	mv ProCaptureLib_64.aa ProCaptureLib_64.a
+ endif
+ 
